@@ -1,8 +1,8 @@
-const paths = require('./paths')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ResponsiveLoaderPlugin = require('responsive-loader/sharp')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ResponsiveLoaderPlugin = require('responsive-loader/sharp');
+const paths = require('./paths');
 
 module.exports = {
   /**
@@ -10,7 +10,7 @@ module.exports = {
    *
    * The first place Webpack looks to start building the bundle.
    */
-  entry: [paths.src + '/index.js'],
+  entry: [`${paths.src}/index.js`],
 
   /**
    * Output
@@ -44,11 +44,11 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: paths.static, 
+          from: paths.static,
           to: 'assets',
           globOptions: {
             ignore: ['*.DS_Store'],
-          }
+          },
         },
       ],
     }),
@@ -60,8 +60,8 @@ module.exports = {
      */
     new HtmlWebpackPlugin({
       title: 'Webpack Boilerplate',
-      favicon: paths.static + '/favicon.png',
-      template: paths.src + '/template.html', // template file
+      favicon: `${paths.static}/favicon.png`,
+      template: `${paths.src}/template.html`, // template file
       filename: 'index.html', // output file
     }),
   ],
@@ -137,4 +137,4 @@ module.exports = {
       },
     ],
   },
-}
+};

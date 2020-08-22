@@ -1,10 +1,10 @@
-const paths = require('./paths')
-const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const ImageMinPlugin = require("imagemin-webpack");
+const merge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ImageMinPlugin = require('imagemin-webpack');
+const common = require('./webpack.common.js');
+const paths = require('./paths');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -30,7 +30,7 @@ module.exports = merge(common, {
 
     /**
      * ImageMinPlugin
-     * 
+     *
      * Optimizes images using compression and different plugins.
      */
     new ImageMinPlugin({
@@ -38,11 +38,11 @@ module.exports = merge(common, {
       cache: true,
       imageminOptions: {
         plugins: [
-          ["gifsicle", { interlaced: true }],
-          ["jpegtran", { progressive: true }],
-          ["mozjpeg", { quality: 80 }],
-          ["optipng", { optimizationLevel: 5 }],
-          ["svgo", { plugins: [ { removeViewBox: false, },],},],
+          ['gifsicle', { interlaced: true }],
+          ['jpegtran', { progressive: true }],
+          ['mozjpeg', { quality: 80 }],
+          ['optipng', { optimizationLevel: 5 }],
+          ['svgo', { plugins: [{ removeViewBox: false }] }],
         ],
       },
     }),
@@ -94,4 +94,4 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-})
+});
